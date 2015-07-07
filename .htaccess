@@ -1,0 +1,13 @@
+RewriteEngine On
+
+
+
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule "." - [skip=100]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule "." - [skip=100]
+
+RewriteRule agenda-([^.]+)_([^.]+)_([^.]+).pdf$         agenda.php?annee=$1&days_before=$2&days_after=$3 [L]
+RewriteRule agenda-([^.]+)_([^.]+).pdf$         agenda.php?annee=$1&days_before=$2&days_after=$2 [L]
+RewriteRule agenda-([^.]+).pdf$                 agenda.php?annee=$1 [L]
+RewriteRule agenda.pdf$				agenda.php [L]
